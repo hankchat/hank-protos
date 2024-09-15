@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package hank.database;
+
+message Results {
+  repeated string rows = 1;
+}

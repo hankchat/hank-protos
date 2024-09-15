@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package hank.cron;
+
+message CronJob {
+  string cron = 1;
+  string job = 2;
+}

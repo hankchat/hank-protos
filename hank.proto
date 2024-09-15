@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "io/send_message_input.proto";
+import "io/send_message_output.proto";
+import "io/react_input.proto";
+import "io/react_output.proto";
+import "io/db_query_input.proto";
+import "io/db_query_output.proto";
+import "io/cron_input.proto";
+import "io/cron_output.proto";
+
+package hank;
+
+service Hank {
+  rpc send_message(SendMessageInput) returns (SendMessageOutput);
+
+  rpc react(ReactInput) returns (ReactOutput);
+
+  rpc db_query(DbQueryInput) returns (DbQueryOutput);
+
+  rpc cron(CronInput) returns (CronOutput);
+}
+
+// service Plugin {
+//   rpc handle_message(HandleMessageInput) returns (HandleMessageOutput);
+// 
+//   rpc get_metadata(GetMetadataInput) returns (GetMetadataOutput);
+// }

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package hank.database;
+
+message PreparedStatement {
+  string sql = 1;
+  repeated string values = 2;
+}

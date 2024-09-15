@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "message/message.proto";
+
+package hank;
+
+message SendMessageInput {
+  hank.message.Message message = 1;
+}

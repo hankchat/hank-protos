@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "database/results.proto";
+
+package hank;
+
+message DbQueryOutput {
+  hank.database.Results results = 1;
+}

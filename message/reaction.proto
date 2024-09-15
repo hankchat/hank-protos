@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "message/message.proto";
+
+package hank.message;
+
+message Reaction {
+  Message message = 1;
+  string emoji = 2;
+}

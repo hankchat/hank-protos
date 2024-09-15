@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "database/prepared_statement.proto";
+
+package hank;
+
+message DbQueryInput {
+  hank.database.PreparedStatement prepared_statement = 1;
+}

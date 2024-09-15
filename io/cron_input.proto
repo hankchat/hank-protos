@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "cron/cron_job.proto";
+
+package hank;
+
+message CronInput {
+  hank.cron.CronJob cron_job = 1;
+}

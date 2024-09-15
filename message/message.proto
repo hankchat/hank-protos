@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package hank.message;
+
+message Message {
+  string channel_id = 1;
+  string message_id = 2;
+  string author_id = 3;
+  string author_name = 4;
+  string content = 5;
+}
+
+// ?? Maybe have a SimpleMessage type that can be extended for DiscordMessage
+// and SlackMessage to allow supporting of both
+//message SimpleMessage {
+//  Author author = 1;
+//  Destination destination = 2;
+//  Date timestamp = 3;
+//  string content = 4; // string?
+//}

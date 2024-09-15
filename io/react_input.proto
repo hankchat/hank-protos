@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "message/reaction.proto";
+
+package hank;
+
+message ReactInput {
+  hank.message.Reaction reaction = 1;
+}
