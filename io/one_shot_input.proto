@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "cron/one_shot.proto";
+import "cron/one_shot_job.proto";
 
 package hank;
 
