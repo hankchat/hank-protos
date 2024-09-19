@@ -4,6 +4,8 @@ import "database/results.proto";
 
 package hank;
 
+// [Internal] Output from a db query request to Hank.
 message DbQueryOutput {
+  // The database results from the query from Hank.
   hank.database.Results results = 1;
 }

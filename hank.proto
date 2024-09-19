@@ -11,13 +11,18 @@ import "io/cron_output.proto";
 
 package hank;
 
+// The underlying core Hank service. Should only be used by internal code.
 service Hank {
+  // Send a chat message to Hank.
   rpc send_message(SendMessageInput) returns (SendMessageOutput);
 
+  // Send a reaction to Hank.
   rpc react(ReactInput) returns (ReactOutput);
 
+  // Send a database query to hank.
   rpc db_query(DbQueryInput) returns (DbQueryOutput);
 
+  // Send a cron job to hank.
   rpc cron(CronInput) returns (CronOutput);
 }
 

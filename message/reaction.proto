@@ -4,7 +4,10 @@ import "message/message.proto";
 
 package hank.message;
 
+// A reaction to a message.
 message Reaction {
+  // A message to react to.
   Message message = 1;
+  // A utf-8 emoji to react with.
   string emoji = 2;
 }

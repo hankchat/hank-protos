@@ -2,9 +2,16 @@ syntax = "proto3";
 
 package hank.plugin;
 
+// Metadata for a plugin.
 message Metadata {
+  // The plguins name.
   string name = 1;
+  // A short description of the plugin.
   string description = 2;
+  // A version string for the plugin. Should follow semver.
+  //
+  // @see: https://semver.org/
   string version = 3;
+  // When true, a SQLite3 database will be created for the plugin.
   bool database = 4;
 }

@@ -2,7 +2,16 @@ syntax = "proto3";
 
 package hank.cron;
 
+// A cron job to run a task at a scheduled interval in the background.
 message CronJob {
+  // The cron schedule string to use for the cron job.
+  //
+  // Example (run every 5th minute):
+  //  */5 * * * *
+  //
+  // @see: https://crontab.guru/
   string cron = 1;
+
+  // A function name to call for each scheduled cron execution.
   string job = 2;
 }

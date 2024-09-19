@@ -2,7 +2,13 @@ syntax = "proto3";
 
 package hank.database;
 
+// A prepared statement to execute on the database.
 message PreparedStatement {
+  // The SQL query to execute, using ? for placeholders.
+  //
+  // Example:
+  //  SELECT * FROM table WHERE id = ?
   string sql = 1;
+  // An array of values to substitute each ? placeholder in the SQL query with.
   repeated string values = 2;
 }

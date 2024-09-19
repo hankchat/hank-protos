@@ -4,6 +4,8 @@ import "message/reaction.proto";
 
 package hank;
 
+// [Internal] Input to a reaction request to Hank.
 message ReactInput {
+  // The reaction to send to Hank.
   hank.message.Reaction reaction = 1;
 }

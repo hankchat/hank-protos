@@ -4,6 +4,8 @@ import "message/message.proto";
 
 package hank;
 
+// [Internal] Input to a send message request to Hank.
 message SendMessageInput {
+  // The message to send to Hank.
   hank.message.Message message = 1;
 }

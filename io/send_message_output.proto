@@ -2,4 +2,5 @@ syntax = "proto3";
 
 package hank;
 
+// [Internal] Output from a send message request to Hank.
 message SendMessageOutput {}

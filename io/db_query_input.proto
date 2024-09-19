@@ -4,6 +4,8 @@ import "database/prepared_statement.proto";
 
 package hank;
 
+// [Internal] Input to a db query request to Hank.
 message DbQueryInput {
+  // The prepared statement to send to Hank.
   hank.database.PreparedStatement prepared_statement = 1;
 }

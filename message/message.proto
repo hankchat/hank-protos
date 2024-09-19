@@ -2,11 +2,17 @@ syntax = "proto3";
 
 package hank.message;
 
+// A chat message.
 message Message {
+  // The channel id the message is from/to.
   string channel_id = 1;
+  // The id of the received message.
   string message_id = 2;
+  // The id of the author of the message.
   string author_id = 3;
+  // The name of the author of the message.
   string author_name = 4;
+  // The content of the message.
   string content = 5;
 }
 
