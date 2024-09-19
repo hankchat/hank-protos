@@ -7,5 +7,5 @@ package hank;
 // [Internal] Input to a one shot request to Hank.
 message OneShotInput {
   // A one shot to send to Hank.
-  hank.cron.OneShot one_shot = 1;
+  hank.cron.OneShotJob one_shot_job = 1;
 }
