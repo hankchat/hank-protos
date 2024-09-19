@@ -8,6 +8,8 @@ import "io/db_query_input.proto";
 import "io/db_query_output.proto";
 import "io/cron_input.proto";
 import "io/cron_output.proto";
+import "io/one_shot_input.proto";
+import "io/one_shot_output.proto";
 
 package hank;
 
@@ -24,6 +26,9 @@ service Hank {
 
   // Send a cron job to hank.
   rpc cron(CronInput) returns (CronOutput);
+
+  // Send a one shot job to hank.
+  rpc one_shot(OneShotInput) returns (OneShotOutput);
 }
 
 // service Plugin {
