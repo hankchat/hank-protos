@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-import "cron/cron_job.proto";
+import "cron/one_shot.proto";
 
 package hank;
 
 // [Internal] Input to a one shot request to Hank.
 message OneShotInput {
-  // A cronjob to send to Hank.
-  hank.cron.CronJob cron_job = 1;
+  // A one shot to send to Hank.
+  hank.cron.OneShot one_shot = 1;
 }
