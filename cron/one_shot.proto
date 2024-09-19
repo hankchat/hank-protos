@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package hank.cron;
+
+// A one shot job to run a task at a scheduled interval in the background.
+message OneShotJob {
+  // The duration in seconds to wait until calling this job.
+  int32 duration = 1;
+
+  // A function name to call for each scheduled cron execution.
+  string job = 2;
+}
