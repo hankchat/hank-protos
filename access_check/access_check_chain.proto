@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package hank.access_check;
+
+message AccessCheckChain {
+  message AccessCheck {
+    message AndCheck {
+      repeated AccessCheck and = 1;
+    }
+
+    message OrCheck {
+      repeated AccessCheck or = 1;
+    }
+
+    oneof kind {
+      AndCheck and = 1;
+      OrCheck or = 2;
+      string owner = 3;
+      string role = 4;
+    }
+  }
+
+  enum Operator {
+    AND = 0;
+    OR = 1;
+  }
+
+  Operator operator = 1;
+
+  repeated AccessCheck checks = 2;
+}

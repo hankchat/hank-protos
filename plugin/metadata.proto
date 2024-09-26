@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "access_check/access_check_chain.proto";
+
 package hank.plugin;
 
 // Metadata for a plugin.
@@ -13,5 +15,10 @@ message Metadata {
   // @see: https://semver.org/
   string version = 3;
   // When true, a SQLite3 database will be created for the plugin.
+  // @deprecated All plugins get a database by default now.
   bool database = 4;
+  // Access checks
+  //
+  // All functionality of this plugin can optionally be gated by accses checks.
+  hank.access_check.AccessCheckChain access_checks = 5;
 }
