@@ -3,15 +3,33 @@ syntax = "proto3";
 package hank.access_check;
 
 // A chain of acess checks
+//
+// Access Checks are used to determine if a user has access to a piece of
+// functionality. A chain of checks and nested chains can be used to represent
+// access logic.
 message AccessCheckChain {
-  // An access check
+  // An individual access check
+  //
+  // Individual access checks test a user for specific access, or can be a
+  // nested chain.
   message AccessCheck {
     oneof kind {
-      // Nested chains to allow for more complex logic
+      // A nested AccessCheckChain
+      //
+      // Access check chains can be nested to allow representations of more
+      // compelx logic.
       AccessCheckChain chain = 1;
-      // Name or ID
+      // A user access check
+      //
+      // Checks if the user requesting access matches this user.
+      //
+      // Can be a user id or a user name.
       string user = 2;
-      // Name or ID
+      // A role access check
+      //
+      // Checks if the user requesting access has this role.
+      //
+      // Can be a role id or a role name.
       string role = 3;
     }
   }
@@ -22,8 +40,10 @@ message AccessCheckChain {
   }
 
   // The operator to use for this chain, i.e. AND/OR
+  //
+  // All access checks in this chain will be combined using this operator.
   Operator operator = 1;
 
-  // The access checks for this chain
+  // A list of access checks to execute in this chain
   repeated AccessCheck checks = 2;
 }
