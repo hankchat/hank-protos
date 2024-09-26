@@ -1,0 +1,3 @@
+[submodule "hank-rust-types"]
+	path = hank-rust-types
+	url = https://github.com/hankchat/hank-rust-types.git
