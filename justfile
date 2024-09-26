@@ -14,16 +14,11 @@ alias e := edit
 @edit:
     $EDITOR "{{ justfile() }}"
 
-rust-types protos="." out="test":
-    rm -rf {{ out }}/src/*
-    protos="$(find {{ protos }} -iname "*.proto" | xargs)" && \
-        protoc --proto_path={{ protos }} \
-            --prost_out={{ out }}/src \
-            --prost_opt=type_attribute=hank.access_check.AccessCheck="#[derive(serde::Serialize\, serde::Deserialize)]" \
-            --prost_opt=type_attribute=hank.access_check.AccessCheck.kind="#[derive(serde::Serialize\, serde::Deserialize)]" \
-            --prost_opt=enum_attribute=hank.access_check.AccessCheck.kind='#[serde(rename_all = "snake_case")]' \
-            --prost_opt=field_attribute=hank.access_check.AccessCheck.kind='#[serde(flatten)]' \
-            --prost-crate_out={{ out }} \
-            --prost-crate_opt=gen_crate={{ out }}/Cargo.toml \
-            $protos
-    cat {{ protos }}/lib.customizations.rs >> {{ out }}/src/lib.rs
+
+rust-types:
+    just --justfile hank-rust-types/justfile types "{{ source_directory() }}"
+
+typescript-types:
+    just --justfile hank-typescript-types/justfile types "{{ source_directory() }}"
+
+types: rust-types typescript-types
