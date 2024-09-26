@@ -43,7 +43,7 @@ typescript-types: (typescript-recipe types "{{ source_directory() }}")
 typescript-clean: (typescript-recipe clean)
 
 # Commit TypeScript types
-typescript-commit: (typescript-recipe commit) }}")
+typescript-commit: (typescript-recipe commit)
 
 # Publish TypeScript types
 typescript-publish version="patch": (typescript-recipe publish version)
