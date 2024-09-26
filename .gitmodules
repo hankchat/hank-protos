@@ -1,3 +1,6 @@
 [submodule "hank-rust-types"]
 	path = hank-rust-types
 	url = https://github.com/hankchat/hank-rust-types.git
+[submodule "hank-typescript-types"]
+	path = hank-typescript-types
+	url = https://github.com/hankchat/hank-typescript-types.git
