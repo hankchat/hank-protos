@@ -19,10 +19,10 @@ rust-types protos="." out="test":
     protos="$(find {{ protos }} -iname "*.proto" | xargs)" && \
         protoc --proto_path={{ protos }} \
             --prost_out={{ out }}/src \
-            --prost_opt=type_attribute=hank.access_check.AccessCheckChain.AccessCheck="#[derive(serde::Serialize\, serde::Deserialize)]" \
-            --prost_opt=type_attribute=hank.access_check.AccessCheckChain.AccessCheck.kind="#[derive(serde::Serialize\, serde::Deserialize)]" \
-            --prost_opt=enum_attribute=hank.access_check.AccessCheckChain.AccessCheck.kind='#[serde(rename_all = "snake_case")]' \
-            --prost_opt=field_attribute=hank.access_check.AccessCheckChain.AccessCheck.kind='#[serde(flatten)]' \
+            --prost_opt=type_attribute=hank.access_check.AccessCheck="#[derive(serde::Serialize\, serde::Deserialize)]" \
+            --prost_opt=type_attribute=hank.access_check.AccessCheck.kind="#[derive(serde::Serialize\, serde::Deserialize)]" \
+            --prost_opt=enum_attribute=hank.access_check.AccessCheck.kind='#[serde(rename_all = "snake_case")]' \
+            --prost_opt=field_attribute=hank.access_check.AccessCheck.kind='#[serde(flatten)]' \
             --prost-crate_out={{ out }} \
             --prost-crate_opt=gen_crate={{ out }}/Cargo.toml \
             $protos

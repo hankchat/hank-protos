@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "access_check/access_check_chain.proto";
+import "access_check/access_check.proto";
 
 package hank.plugin;
 

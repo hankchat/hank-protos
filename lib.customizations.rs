@@ -9,7 +9,7 @@ impl serde::ser::Serialize for crate::access_check::AccessCheckChain {
         use serde::ser::SerializeStruct as _;
         let mut state = serializer.serialize_struct("AccessCheckChain", 1)?;
         state.serialize_field(
-            crate::access_check::access_check_chain::Operator::try_from(self.operator)
+            crate::access_check::AccessCheckOperator::try_from(self.operator)
                 .expect("invalid operator")
                 .as_str_name(),
             &self.checks,
@@ -19,16 +19,14 @@ impl serde::ser::Serialize for crate::access_check::AccessCheckChain {
     }
 }
 
-impl<'de> serde::de::Deserialize<'de> for crate::access_check::AccessCheckChain {
+impl<'de> serde::de::Deserialize<'de> for access_check::AccessCheckChain {
     fn deserialize<D: serde::de::Deserializer<'de>>(d: D) -> Result<Self, D::Error> {
-        let d: std::collections::BTreeMap<
-            String,
-            Vec<crate::access_check::access_check_chain::AccessCheck>,
-        > = std::collections::BTreeMap::deserialize(d)?;
+        let d: std::collections::BTreeMap<String, Vec<access_check::AccessCheck>> =
+            std::collections::BTreeMap::deserialize(d)?;
 
         let (operator, checks) = d.first_key_value().expect("invalid access chain format");
-        Ok(crate::access_check::AccessCheckChain {
-            operator: access_check::access_check_chain::Operator::from_str_name(operator)
+        Ok(access_check::AccessCheckChain {
+            operator: access_check::AccessCheckOperator::from_str_name(operator)
                 .expect("invalid access chain operator")
                 .into(),
             checks: checks.to_vec(),
@@ -38,13 +36,13 @@ impl<'de> serde::de::Deserialize<'de> for crate::access_check::AccessCheckChain 
 
 #[cfg(test)]
 mod tests {
-    use super::access_check::access_check_chain::{access_check::Kind, AccessCheck, Operator};
     use super::access_check::AccessCheckChain;
+    use super::access_check::{access_check::Kind, AccessCheck, AccessCheckOperator};
 
     #[test]
     fn test_name() {
         let chain = AccessCheckChain {
-            operator: Operator::Or as i32,
+            operator: AccessCheckOperator::Or as i32,
             checks: vec![
                 AccessCheck {
                     kind: Some(Kind::User("1231231213".into())),
