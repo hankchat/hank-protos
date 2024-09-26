@@ -36,7 +36,6 @@ message AccessCheck {
 // functionality. A chain of checks and nested chains can be used to represent
 // access logic.
 message AccessCheckChain {
-
   // The operator to use for this chain, i.e. AND/OR
   //
   // All access checks in this chain will be combined using this operator.
