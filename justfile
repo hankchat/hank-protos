@@ -19,34 +19,34 @@ rust-recipe recipe *args:
     just --yes --justfile hank-rust-types/justfile {{ recipe }} {{ args }}
 
 # Generate Rust types
-rust-types: (rust-recipe types "{{ source_directory() }}")
+rust-types: (rust-recipe "types" "{{ source_directory() }}")
 
 # Clean Rust types
 [confirm("Clean rust types?")]
-rust-clean: (rust-recipe clean)
+rust-clean: (rust-recipe "clean")
 
 # Commit Rust types
-rust-commit: (rust-recipe commit)
+rust-commit: (rust-recipe "commit")
 
 # Publish Rust types
-rist-publish version="patch": (rust-recipe pubslish version)
+rust-publish version="patch": (rust-recipe "pubslish" version)
 
 # Run a TypeScript recipe (will always pass --yes)
 typescript-recipe recipe *args:
     just --yes --justfile hank-typescript-types/justfile {{ recipe }} {{ args }}
 
 # Generate TypeScript types
-typescript-types: (typescript-recipe types "{{ source_directory() }}")
+typescript-types: (typescript-recipe "types" "{{ source_directory() }}")
 
 # Clean TypeScript types
 [confirm("Clean typescript types?")]
-typescript-clean: (typescript-recipe clean)
+typescript-clean: (typescript-recipe "clean")
 
 # Commit TypeScript types
-typescript-commit: (typescript-recipe commit)
+typescript-commit: (typescript-recipe "commit")
 
 # Publish TypeScript types
-typescript-publish version="patch": (typescript-recipe publish version)
+typescript-publish version="patch": (typescript-recipe "publish" version)
 
 # Generate all types
 types: rust-types typescript-types
