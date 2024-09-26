@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package hank.access_check;
+
+enum AccessCheckOperator {
+  AND = 0;
+  OR = 1;
+}
