@@ -2,21 +2,17 @@ syntax = "proto3";
 
 package hank.access_check;
 
+// A chain of acess checks
 message AccessCheckChain {
+  // An access check
   message AccessCheck {
-    message AndCheck {
-      repeated AccessCheck and = 1;
-    }
-
-    message OrCheck {
-      repeated AccessCheck or = 1;
-    }
-
     oneof kind {
-      AndCheck and = 1;
-      OrCheck or = 2;
-      string owner = 3;
-      string role = 4;
+      // Nested chains to allow for more complex logic
+      AccessCheckChain chain = 1;
+      // Name or ID
+      string user = 2;
+      // Name or ID
+      string role = 3;
     }
   }
 
@@ -25,7 +21,9 @@ message AccessCheckChain {
     OR = 1;
   }
 
+  // The operator to use for this chain, i.e. AND/OR
   Operator operator = 1;
 
+  // The access checks for this chain
   repeated AccessCheck checks = 2;
 }
