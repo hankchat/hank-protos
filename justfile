@@ -14,11 +14,20 @@ alias e := edit
 @edit:
     $EDITOR "{{ justfile() }}"
 
-
 rust-types:
     just --justfile hank-rust-types/justfile types "{{ source_directory() }}"
+
+[confirm("Clean rust types?")]
+rust-clean:
+    just --yes --justfile hank-rust-types/justfile clean
 
 typescript-types:
     just --justfile hank-typescript-types/justfile types "{{ source_directory() }}"
 
+[confirm("Clean typescript types?")]
+typescript-clean:
+    just --yes --justfile hank-typescript-types/justfile clean
+
 types: rust-types typescript-types
+
+clean: rust-clean typescript-clean
