@@ -19,7 +19,7 @@ rust-recipe recipe *args:
     just --yes --justfile hank-rust-types/justfile {{ recipe }} {{ args }}
 
 # Generate Rust types
-rust-types: (rust-recipe "types" "{{ source_directory() }}")
+rust-types: (rust-recipe "types" source_directory())
 
 # Clean Rust types
 [confirm("Clean rust types?")]
@@ -36,7 +36,7 @@ typescript-recipe recipe *args:
     just --yes --justfile hank-typescript-types/justfile {{ recipe }} {{ args }}
 
 # Generate TypeScript types
-typescript-types: (typescript-recipe "types" "{{ source_directory() }}")
+typescript-types: (typescript-recipe "types" source_directory())
 
 # Clean TypeScript types
 [confirm("Clean typescript types?")]
