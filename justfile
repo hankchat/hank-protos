@@ -80,9 +80,6 @@ publish: rust-publish typescript-publish
 [group("all")]
 [no-exit-message]
 update-submodules:
-    @test -z "$(git status --porcelain)" \
-        || echo "{{ error }} Working tree not clean" && exit 1
+    @test -z "$(git status --porcelain)" || echo "{{ error }} Working tree not clean" && exit 1
     git submodule update --recursive
-    [[ -n "$(git status --porcelain)" ]] \
-        && git commit -m "Update all submodules" \
-        || echo "Nothing to update"
+    [[ -n "$(git status --porcelain)" ]] && git commit -m "Update all submodules" || echo "Nothing to update"
