@@ -64,6 +64,11 @@ typescript-publish version="patch": (_typescript-recipe "publish" version)
 [group("all")]
 types: rust-types typescript-types
 
+# Diff all generated types
+[group("all")]
+diff:
+    git submodule foreach git diff
+
 # Clean all types
 [group("all")]
 clean: rust-clean typescript-clean
@@ -74,7 +79,7 @@ commit: rust-commit typescript-commit
 
 # Publish all types
 [group("all")]
-publish: rust-publish typescript-publish
+publish version="patch": (rust-publish version) (typescript-publish version)
 
 # Update all submodules to their latest version
 [group("all")]
