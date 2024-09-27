@@ -88,7 +88,7 @@ update-submodules:
     @test -z "$(git status --porcelain --ignore-submodules)" \
         || (echo "{{ error }} Working tree not clean" && exit 1)
 
-    git pull --recurse-submodules
+    git pull --recurse-submodules --jobs=10 && git submodule update
 
     @[[ -n "$(git status --porcelain --ignore-submodules)" ]] \
         && git commit -m "Update all submodules" \
