@@ -1,3 +1,7 @@
+red := `tput setaf 1`
+normal := `tput sgr0`
+bold := `tput bold`
+error := bold + red + "ERROR:" + normal
 chooser := "grep -v choose | fzf --tmux"
 # Display this list of available commands
 @list:
@@ -74,9 +78,12 @@ publish: rust-publish typescript-publish
 
 # Update all submodules to their latest version
 [group("all")]
+[no-exit-message]
 update-submodules:
-    cd hank-rust-types && git pull
-    git add hank-rust-types
-    cd hank-rust-types && git pull
-    git add hank-typescript-types
-    git commit -m "Update all submodules"
+    @test -z "$(git status --porcelain)" \
+        || echo "{{ error }} Working tree not clean" && exit 1
+
+    git submodule update --recursive
+
+    [[ -n "$(git status --porcelain)" ]] \
+        && git commit -m "Update all submodules"
