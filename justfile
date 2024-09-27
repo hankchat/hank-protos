@@ -41,7 +41,7 @@ rust-commit: (_rust-recipe "commit")
 
 # Publish Rust types
 [group("rust")]
-rust-publish version="patch": (_rust-recipe "pubslish" version)
+rust-publish version="patch": (_rust-recipe "publish" version)
 
 # Generate TypeScript types
 [group("typescript")]
