@@ -86,4 +86,5 @@ update-submodules:
     git submodule update --recursive
 
     [[ -n "$(git status --porcelain)" ]] \
-        && git commit -m "Update all submodules"
+        && git commit -m "Update all submodules" \
+        || echo "Nothing to update"
