@@ -85,11 +85,11 @@ publish version="patch": (rust-publish version) (typescript-publish version)
 [group("all")]
 [no-exit-message]
 update-submodules:
-    @test -z "$(git status --porcelain)" \
+    @test -z "$(git status --porcelain --ignore-submodules)" \
         || (echo "{{ error }} Working tree not clean" && exit 1)
 
     git submodule update --recursive
 
-    @[[ -n "$(git status --porcelain)" ]] \
+    @[[ -n "$(git status --porcelain --ignore-submodules)" ]] \
         && git commit -m "Update all submodules" \
         || echo "Nothing to update"
