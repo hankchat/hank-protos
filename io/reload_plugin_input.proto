@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package hank;
+
+// [Internal] Input to a reload plugin request to Hank.
+message ReloadPluginInput {
+  // The plugin to reload.
+  string plugin = 1;
+}

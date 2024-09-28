@@ -10,25 +10,27 @@ import "io/cron_input.proto";
 import "io/cron_output.proto";
 import "io/one_shot_input.proto";
 import "io/one_shot_output.proto";
+import "io/reload_plugin_input.proto";
+import "io/reload_plugin_output.proto";
 
 package hank;
 
-// The underlying core Hank service. Should only be used by internal code.
+// [Internal] The underlying core Hank service. Should only be used by internal code.
 service Hank {
-  // Send a chat message to Hank.
+  // [Internal] Send a chat message to Hank.
   rpc send_message(SendMessageInput) returns (SendMessageOutput);
-
-  // Send a reaction to Hank.
+  // [Internal] Send a reaction to Hank.
   rpc react(ReactInput) returns (ReactOutput);
-
-  // Send a database query to hank.
+  // [Internal] Send a database query to hank.
   rpc db_query(DbQueryInput) returns (DbQueryOutput);
-
-  // Send a cron job to hank.
+  // [Internal] Send a cron job to hank.
   rpc cron(CronInput) returns (CronOutput);
-
-  // Send a one shot job to hank.
+  // [Internal] Send a one shot job to hank.
   rpc one_shot(OneShotInput) returns (OneShotOutput);
+  // [Internal] Send a reload plugin request to hank.
+  //
+  // Requires EscalatedPrivilege::RELOAD_PLUGIN
+  rpc reload_plugin(ReloadPluginInput) returns (ReloadPluginOutput);
 }
 
 // service Plugin {
