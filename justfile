@@ -91,7 +91,7 @@ update-submodules:
         || (echo "{{ error }} Working tree not clean" && exit 1)
 
     git submodule update --recursive --remote --jobs=10
-    git add $(git submodule status | cut -d ' ' -f2)
+    git add $(git submodule status | grep "^+" | cut -d ' ' -f2) 2>/dev/null
 
     @[[ -n "$(git status --porcelain)" ]] \
         && git commit -m "Update all submodules" \
