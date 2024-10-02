@@ -23,10 +23,10 @@ message Metadata {
   // Access checks
   //
   // All functionality of this plugin can optionally be gated by accses checks.
-  hank.access_check.AccessCheckChain access_checks = 5;
+  optional hank.access_check.AccessCheckChain access_checks = 5;
   // A secret escalation key that grants this plugin specific escalated
   // privileges.
-  string escalation_key = 6;
+  optional string escalation_key = 6;
   // A list of escalated privileges that this plugin requests to use.
   repeated hank.plugin.EscalatedPrivilege escalated_privileges = 7;
   // The author of the plugin.

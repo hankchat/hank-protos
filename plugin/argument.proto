@@ -13,7 +13,7 @@ message Argument {
   // Whether or not this argument is required.
   bool required = 4;
   // Sets the short version of the argument without the preceding -.
-  string short = 5;
+  optional string short = 5;
   // Sets the long version of the argument without the preceding --.
-  string long = 6;
+  optional string long = 6;
 }
