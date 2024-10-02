@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "plugin/argument.proto";
+
+package hank.plugin;
+
+// Plugin commands.
+message Command {
+  // Command name.
+  string name = 1;
+  // Command description.
+  string description = 2;
+  // Command author.
+  string author = 3;
+  // A version string for the command. Should follow semver.
+  //
+  // @see: https://semver.org/
+  string version = 4;
+  // Command aliases.
+  repeated string aliases = 5;
+  // Command arguments.
+  repeated hank.plugin.Argument arguments = 6;
+  // Command subcommands.
+  repeated Command subcommands = 7;
+}

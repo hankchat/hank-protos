@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package hank.plugin;
+
+// Arguments for a plugin or a plugins subcommands.
+message Argument {
+  // Argument name.
+  string name = 1;
+  // Argument description.
+  string description = 2;
+  // Optional argument default value.
+  optional string default_value = 3;
+  // Whether or not this argument is required.
+  bool required = 4;
+  // Sets the short version of the argument without the preceding -.
+  string short = 5;
+  // Sets the long version of the argument without the preceding --.
+  string long = 6;
+}

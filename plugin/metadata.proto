@@ -2,6 +2,8 @@ syntax = "proto3";
 
 import "access_check/access_check.proto";
 import "plugin/escalated_privilege.proto";
+import "plugin/argument.proto";
+import "plugin/command.proto";
 
 package hank.plugin;
 
@@ -27,4 +29,18 @@ message Metadata {
   string escalation_key = 6;
   // A list of escalated privileges that this plugin requests to use.
   repeated hank.plugin.EscalatedPrivilege escalated_privileges = 7;
+  // The author of the plugin.
+  string author = 8;
+  // Whether or not this plugin handles commands.
+  bool handles_commands = 9;
+  // Whether or not this plugin handles messages.
+  bool handles_messages = 10;
+  // Optionally override the plugin command name.
+  optional string command_name = 11;
+  // Optional aliases for the plugin command.
+  repeated string aliases = 12;
+  // Arguments for the plugin command.
+  repeated hank.plugin.Argument arguments = 13;
+  // Plugin subcommands.
+  repeated hank.plugin.Command subcommands = 14;
 }
