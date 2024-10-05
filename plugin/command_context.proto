@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package hank.plugin;
 
-// Plugin commands.
+// Plugin command context.
 message CommandContext {
   // The name of the command.
   string name = 1;
