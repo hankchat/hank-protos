@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "plugin/argument.proto";
+
+package hank.plugin;
+
+// Plugin commands.
+message CommandContext {
+  // The name of the command.
+  string name = 1;
+
+  // Valid arguments for this command.
+  repeated string valid_arguments = 2;
+
+  // Valid subcommands for this command.
+  repeated string valid_subcommands = 3;
+
+  // Arguments passed to the command.
+  map<string, string> arguments = 4;
+
+  // Optional nested subcommand context.
+  optional CommandContext subcommand = 5;
+}
