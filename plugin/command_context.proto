@@ -7,15 +7,9 @@ message CommandContext {
   // The name of the command.
   string name = 1;
 
-  // Valid arguments for this command.
-  repeated string valid_arguments = 2;
-
-  // Valid subcommands for this command.
-  repeated string valid_subcommands = 3;
-
   // Arguments passed to the command.
-  map<string, string> arguments = 4;
+  map<string, string> arguments = 2;
 
   // Optional nested subcommand context.
-  optional CommandContext subcommand = 5;
+  optional CommandContext subcommand = 3;
 }
