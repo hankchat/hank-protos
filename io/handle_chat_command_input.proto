@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "plugin/command_context.proto";
+
+package hank;
+
+// [Internal] Input to a handle chat command request to Hank.
+message HandleChatCommandInput {
+  // The chat command context to send to Hank.
+  hank.plugin.CommandContext context = 1;
+}
