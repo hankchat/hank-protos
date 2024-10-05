@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-import "plugin/argument.proto";
-
 package hank.plugin;
 
 // Plugin commands.
