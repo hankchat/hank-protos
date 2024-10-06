@@ -1,6 +1,11 @@
 syntax = "proto3";
 
+import "plugin/metadata.proto";
+
 package hank;
 
 // [Internal] Output from a load plugin request to Hank.
-message LoadPluginOutput {}
+message LoadPluginOutput {
+  // The metadata returned by the loaded plugin.
+  hank.plugin.Metadata metadata = 1;
+}
