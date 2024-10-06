@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package hank.plugin;
+
+// An argument passed to a commands context.
+message CommandContextArgument {
+  // The name of the argument.
+  string name = 1;
+  // The value of the argument.
+  string value = 2;
+}

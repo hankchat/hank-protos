@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "plugin/command_context_argument.proto";
+
 package hank.plugin;
 
 // Plugin command context.
@@ -8,7 +10,7 @@ message CommandContext {
   string name = 1;
 
   // Arguments passed to the command.
-  map<string, string> arguments = 2;
+  map<int32, hank.plugin.CommandContextArgument> arguments = 2;
 
   // Optional nested subcommand context.
   optional CommandContext subcommand = 3;
