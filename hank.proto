@@ -12,6 +12,8 @@ import "io/one_shot_input.proto";
 import "io/one_shot_output.proto";
 import "io/reload_plugin_input.proto";
 import "io/reload_plugin_output.proto";
+import "io/load_plugin_input.proto";
+import "io/load_plugin_output.proto";
 
 package hank;
 
@@ -31,6 +33,10 @@ service Hank {
   //
   // Requires EscalatedPrivilege::RELOAD_PLUGIN
   rpc reload_plugin(ReloadPluginInput) returns (ReloadPluginOutput);
+  // [Internal] Send a load plugin request to hank.
+  //
+  // Requires EscalatedPrivilege::LOAD_PLUGIN
+  rpc load_plugin(LoadPluginInput) returns (LoadPluginOutput);
 }
 
 // service Plugin {

@@ -43,4 +43,8 @@ message Metadata {
   repeated hank.plugin.Argument arguments = 13;
   // Plugin subcommands.
   repeated hank.plugin.Command subcommands = 14;
+  // Hosts that this plugin requests permissions to access via HTTP.
+  repeated string allowed_hosts = 15;
+  // Pool size this plugin requests.
+  int32 pool_size = 16;
 }

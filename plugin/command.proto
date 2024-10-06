@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "plugin/argument.proto";
+import "plugin/access_check/access_check.proto";
 
 package hank.plugin;
 
@@ -22,4 +23,8 @@ message Command {
   repeated hank.plugin.Argument arguments = 6;
   // Command subcommands.
   repeated Command subcommands = 7;
+  // Access checks
+  //
+  // This command can optionally be gated by access checks.
+  optional hank.access_check.AccessCheckChain access_checks = 8;
 }

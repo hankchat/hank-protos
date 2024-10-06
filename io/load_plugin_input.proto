@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package hank;
+
+// [Internal] Input to a load plugin request to Hank.
+message LoadPluginInput {
+  // The url to a compiled plugins wasm file to load.
+  string url = 1;
+}
