@@ -5,4 +5,5 @@ package hank.plugin;
 enum EscalatedPrivilege {
   ALL = 0;
   RELOAD_PLUGIN = 1;
+  LOAD_PLUGIN = 2;
 }
