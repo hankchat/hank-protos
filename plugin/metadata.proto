@@ -46,5 +46,5 @@ message Metadata {
   // Hosts that this plugin requests permissions to access via HTTP.
   repeated string allowed_hosts = 15;
   // Pool size this plugin requests.
-  int32 pool_size = 16;
+  optional int32 pool_size = 16;
 }
