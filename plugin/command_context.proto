@@ -10,7 +10,7 @@ message CommandContext {
   string name = 1;
 
   // Arguments passed to the command.
-  map<int32, hank.plugin.CommandContextArgument> arguments = 2;
+  repeated hank.plugin.CommandContextArgument arguments = 2;
 
   // Optional nested subcommand context.
   optional CommandContext subcommand = 3;
