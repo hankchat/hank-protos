@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "plugin/command_context.proto";
+import "message/message.proto";
 
 package hank;
 
@@ -8,4 +9,6 @@ package hank;
 message HandleChatCommandInput {
   // The chat command context to send to Hank.
   hank.plugin.CommandContext context = 1;
+  // The message that the chat command originates from.
+  hank.message.Message message = 2;
 }
