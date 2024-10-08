@@ -4,6 +4,13 @@ package hank;
 
 // [Internal] Input to a load plugin request to Hank.
 message LoadPluginInput {
-  // The url to a compiled plugins wasm file to load.
-  string url = 1;
+  // A compiled plugin wasm file to load.
+  oneof wasm {
+    // Get compiled plugin wasm file from a url.
+    string url = 1;
+    // Get compiled plugin wasm file from a path on hanks system.
+    string path = 2;
+    // Compiled plugin wasm file as bytes.
+    bytes bytes = 3;
+  }
 }
