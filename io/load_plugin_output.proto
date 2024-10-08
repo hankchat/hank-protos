@@ -8,4 +8,6 @@ package hank;
 message LoadPluginOutput {
   // The metadata returned by the loaded plugin.
   hank.plugin.Metadata metadata = 1;
+  // The plugins extism::Manifest, as JSON.
+  string manifest = 2;
 }
