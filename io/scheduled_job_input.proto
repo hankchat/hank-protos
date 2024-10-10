@@ -1,6 +1,16 @@
 syntax = "proto3";
 
+import "cron/cron_job.proto";
+import "cron/one_shot_job.proto";
+
 package hank;
 
 // [Internal] Input to a InstructionKind::SheduledJob request to Hank.
-message ScheduledJobInput {}
+message ScheduledJobInput {
+  oneof scheduled_job {
+    // A cronjob to send to Hank.
+    hank.cron.CronJob cron_job = 1;
+    // A one shot to send to Hank.
+    hank.cron.OneShotJob one_shot_job = 2;
+  }
+}
