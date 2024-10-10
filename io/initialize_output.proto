@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package hank;
+
+// [Internal] Output from a InstructionKind::Initialize request to Hank.
+message InitializeOutput {}

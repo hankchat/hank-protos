@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "plugin/metadata.proto";
+
+package hank;
+
+// [Internal] Output from a InstructionKind::GetMetadata request to Hank.
+message GetMetadataOutput {
+  // The metadata returned by the plugin.
+  hank.plugin.Metadata metadata = 1;
+}

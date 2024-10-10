@@ -14,6 +14,20 @@ import "io/reload_plugin_input.proto";
 import "io/reload_plugin_output.proto";
 import "io/load_plugin_input.proto";
 import "io/load_plugin_output.proto";
+import "io/chat_command_input.proto";
+import "io/chat_command_output.proto";
+import "io/chat_message_input.proto";
+import "io/chat_message_output.proto";
+import "io/get_metadata_input.proto";
+import "io/get_metadata_output.proto";
+import "io/initialize_input.proto";
+import "io/initialize_output.proto";
+import "io/install_input.proto";
+import "io/install_output.proto";
+import "io/scheduled_job_input.proto";
+import "io/scheduled_job_output.proto";
+import "io/shutdown_input.proto";
+import "io/shutdown_output.proto";
 
 package hank;
 
@@ -39,8 +53,71 @@ service Hank {
   rpc load_plugin(LoadPluginInput) returns (LoadPluginOutput);
 }
 
-// service Plugin {
-//   rpc handle_message(HandleMessageInput) returns (HandleMessageOutput);
-// 
-//   rpc get_metadata(GetMetadataInput) returns (GetMetadataOutput);
-// }
+// The underlying interface for a Hank plugin.
+service Plugin {
+  // Plugin entry point function. This function must only set the global Hank
+  // metadata.
+  // rpc plugin();
+
+  // [Internal] Handle InstructionKind::GetMetadata
+  //
+  // This is the first function called after the entry point to retrieve the
+  // plugins metadata.
+  rpc handle_get_metadata(GetMetadataInput) returns (GetMetadataOutput);
+  // [Internal] Handle InstructionKind::Install
+  //
+  // If the plugin registers an install handler, the plugin service will call
+  // out to it.
+  //
+  // The install function is only called a single time when the plugin is
+  // installed.
+  //
+  // The install function registered by the plugin should be used to create
+  // database tables and other tasks that may only need to happen a single time
+  // in a plugins lifetime.
+  rpc handle_install(InstallInput) returns (InstallOutput);
+  // [Internal] Handle InstructionKind::Initialize
+  //
+  // If the plugin registers an initialize handler, the plugin service will
+  // call out to it.
+  //
+  // The initialize function registered by the plugin should be used to execute
+  // any functionality that should be run every time the plugin is loaded by
+  // hank, e.g. scheduling jobs, sending a message to a channel, etc.
+  rpc handle_initialize(InitializeInput) returns (InitializeOutput);
+  // [Internal] Handle InstructionKind::Shutdown
+  //
+  // If the plugin registers a shutdown handler, the plugin service will call
+  // out to it.
+  //
+  // The shutdown function registered by the plugin should be used to execute
+  // any functions necessary to gracefully shut down the plugin.
+  rpc handle_shutdown(ShutdownInput) returns (ShutdownOutput);
+  // [Internal] Handle InstructionKind::ChatMessage
+  //
+  // If the plugin registers a chat message handler, the plugin service will
+  // call out to it.
+  //
+  // The message handler function registered by the plugin should be used to
+  // execute functionality that functions on general chat messages. Plugins
+  // should prefer registering chat commands in their metadata and using the
+  // chat command handler over custom command parsing implementations.
+  rpc handle_chat_message(ChatMessageInput) returns (ChatMessageOutput);
+  // [Internal] Handle InstructionKind::ChatCommand
+  //
+  // If the plugin registers a chat command handler, the plugin service will
+  // call out to it.
+  //
+  // The chat command handler function registered by the plugin should be used
+  // to execute custom plugin commands. Plugins can register their commands in
+  // the plugin metadata. See hank.plugin.Metadata for more information.
+  rpc handle_chat_command(ChatCommandInput) returns (ChatCommandOutput);
+  // [Internal] Handle InstructionKind::ScheduledJob
+  //
+  // If the plugin registers cron or one shot jobs, the plugin service will
+  // receive instruction from hank to execute the scheduled job.
+  //
+  // See your PDK documentation for information on registering cron and one
+  // shot jobs.
+  rpc handle_scheduled_job(ScheduledJobInput) returns (ScheduledJobOutput);
+}

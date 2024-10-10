@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package hank;
+
+// [Internal] Input to a InstructionKind::GetMetadata request to Hank.
+message GetMetadataInput {}
