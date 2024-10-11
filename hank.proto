@@ -28,6 +28,8 @@ import "io/scheduled_job_input.proto";
 import "io/scheduled_job_output.proto";
 import "io/shutdown_input.proto";
 import "io/shutdown_output.proto";
+import "io/instruct_plugin_input.proto";
+import "io/instruct_plugin_output.proto";
 
 package hank;
 
@@ -51,6 +53,10 @@ service Hank {
   //
   // Requires EscalatedPrivilege::LOAD_PLUGIN
   rpc load_plugin(LoadPluginInput) returns (LoadPluginOutput);
+  // [Internal] Send an instruct plugin request to hank.
+  //
+  // Requires EscalatedPrivilege::INSTRUCT_PLUGIN
+  rpc instruct_plugin(InstructPluginInput) returns (InstructPluginOutput);
 }
 
 // The underlying interface for a Hank plugin.

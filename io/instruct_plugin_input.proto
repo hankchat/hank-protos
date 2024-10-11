@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "plugin/instruction.proto";
+
+package hank;
+
+// [Internal] Input to a instruct plugin request to Hank.
+message InstructPluginInput {
+  // The the instruction to send to a Hank plugin.
+  hank.plugin.Instruction instruction = 1;
+}

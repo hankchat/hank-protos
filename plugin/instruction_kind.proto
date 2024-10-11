@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package hank.plugin;
+
+// [Internal] Kinds of instructions that can be sent to hank plugins.
+enum InstructionKind {
+  // Plugin entry point.
+  Plugin = 0;
+  // Get the plugins metadata.
+  GetMetadata = 1;
+  // Call the plugins install function. (only happens once)
+  Install = 2;
+  // Call the plugins initialize function. (happens on every load)
+  Initialize = 3;
+  // Call the plugins shutdown function. (happens on reload, unload, uninstall)
+  Shutdown = 4;
+  // Call the plguins chat message handler.
+  ChatMessage = 5;
+  // Call the plguins chat command handler.
+  ChatCommand = 6;
+  // Call the plguins scheduled job handler.
+  ScheduledJob = 7;
+}

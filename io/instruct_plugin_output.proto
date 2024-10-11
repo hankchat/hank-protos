@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package hank;
+
+// [Internal] Output from a instruct plugin request to Hank.
+message InstructPluginOutput {}
