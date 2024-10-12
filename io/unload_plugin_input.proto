@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package hank;
+
+// [Internal] Input to an unload plugin request to Hank.
+message UnloadPluginInput {
+  // The plugin to unload.
+  string plugin = 1;
+}

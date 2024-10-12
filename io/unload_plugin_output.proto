@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package hank;
+
+// [Internal] Output from an unload plugin request to Hank.
+message UnloadPluginOutput {}

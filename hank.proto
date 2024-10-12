@@ -30,6 +30,8 @@ import "io/shutdown_input.proto";
 import "io/shutdown_output.proto";
 import "io/instruct_plugin_input.proto";
 import "io/instruct_plugin_output.proto";
+import "io/unload_plugin_input.proto";
+import "io/unload_plugin_output.proto";
 
 package hank;
 
@@ -53,6 +55,10 @@ service Hank {
   //
   // Requires EscalatedPrivilege::LOAD_PLUGIN
   rpc load_plugin(LoadPluginInput) returns (LoadPluginOutput);
+  // [Internal] Send an unload plugin request to hank.
+  //
+  // Requires EscalatedPrivilege::UNLOAD_PLUGIN
+  rpc unload_plugin(UnloadPluginInput) returns (UnloadPluginOutput);
   // [Internal] Send an instruct plugin request to hank.
   //
   // Requires EscalatedPrivilege::INSTRUCT_PLUGIN
