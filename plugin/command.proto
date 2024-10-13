@@ -27,4 +27,8 @@ message Command {
   //
   // This command can optionally be gated by access checks.
   optional hank.access_check.AccessCheckChain access_checks = 8;
+  // Show help if no args are passed to this command.
+  //
+  // NOTE: Subcommands count as arguments.
+  bool arg_required_else_help = 9;
 }
