@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package hank.channel;
+
+// Each kind of chat channel
+enum ChannelKind {
+  // A chat root, i.e. a regular public channel
+  CHAT_ROOM = 0;
+  // A direct message
+  DIRECT_MESSAGE = 1;
+}

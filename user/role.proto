@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package hank.user;
+
+// A user role
+message Role {
+  // The role id
+  string id = 1;
+  // The role name
+  string name = 2;
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "user/role.proto";
+
+package hank.user;
+
+// A chat user
+message User {
+  // The users id
+  string id = 1;
+  // The users username
+  string name = 2;
+  // The users display name
+  string display_name = 3;
+  // Any roles the user might have
+  repeated hank.user.Role roles = 4;
+}

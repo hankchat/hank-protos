@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "channel/channel_kind.proto";
+
+package hank.channel;
+
+// A channel where chats happen
+message Channel {
+  // The kind of channel
+  hank.channel.ChannelKind kind = 1;
+  // The channels id
+  string id = 2;
+  // The channels name
+  string name = 3;
+}

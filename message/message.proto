@@ -1,26 +1,21 @@
 syntax = "proto3";
 
+import "user/user.proto";
+import "channel/channel.proto";
+import "google/protobuf/timestamp.proto";
+
 package hank.message;
 
-// A chat message.
+// A chat message
 message Message {
-  // The channel id the message is from/to.
-  string channel_id = 1;
-  // The id of the received message.
-  string message_id = 2;
-  // The id of the author of the message.
-  string author_id = 3;
-  // The name of the author of the message.
-  string author_name = 4;
-  // The content of the message.
+  // The id of a received message
+  string id = 1;
+  // Message timestamp
+  google.protobuf.Timestamp timestamp = 2;
+  // The user who authored the message
+  hank.user.User author = 3;
+  // The channel the message is to/from
+  hank.channel.Channel channel = 4;
+  // The message content
   string content = 5;
 }
-
-// ?? Maybe have a SimpleMessage type that can be extended for DiscordMessage
-// and SlackMessage to allow supporting of both
-//message SimpleMessage {
-//  Author author = 1;
-//  Destination destination = 2;
-//  Date timestamp = 3;
-//  string content = 4; // string?
-//}
