@@ -47,4 +47,8 @@ message Metadata {
   repeated string allowed_hosts = 15;
   // Pool size this plugin requests.
   optional int32 pool_size = 16;
+  // Show help if no args are passed to the plugin command.
+  //
+  // NOTE: Subcommands count as arguments.
+  bool arg_required_else_help = 17;
 }
