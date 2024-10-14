@@ -3,4 +3,7 @@ syntax = "proto3";
 package hank;
 
 // [Internal] Output from a reaction request to Hank.
-message ReactOutput {}
+message ReactOutput {
+  // An error message, if there was an error.
+  optional string error = 1;
+}

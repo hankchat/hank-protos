@@ -3,4 +3,7 @@ syntax = "proto3";
 package hank;
 
 // [Internal] Output from a one shot request to Hank.
-message OneShotOutput {}
+message OneShotOutput {
+  // An error message, if there was an error.
+  optional string error = 1;
+}

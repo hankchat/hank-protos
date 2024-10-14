@@ -10,4 +10,6 @@ message LoadPluginOutput {
   hank.plugin.Metadata metadata = 1;
   // The plugins extism::Manifest, as JSON.
   string manifest = 2;
+  // An error message, if there was an error.
+  optional string error = 3;
 }
