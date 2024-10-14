@@ -8,4 +8,6 @@ package hank;
 message DbQueryOutput {
   // The database results from the query from Hank.
   hank.database.Results results = 1;
+  // An error message, if there was an error.
+  optional string error = 2;
 }
