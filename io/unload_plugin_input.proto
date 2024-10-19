@@ -6,4 +6,8 @@ package hank;
 message UnloadPluginInput {
   // The plugin to unload.
   string plugin = 1;
+  // Whether or not hank should clean up any plugin assets, e.g. database file.
+  // This should be set to true if this plugin is being unloaded as a result
+  // of an uninstall command.
+  bool cleanup = 2;
 }
