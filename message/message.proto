@@ -10,7 +10,7 @@ package hank.message;
 message Message {
   // The id of a received message
   optional string id = 1;
-  // The time the message was sent
+  // The UTC epoch time the message was sent
   optional google.protobuf.Timestamp timestamp = 2;
   // The user who authored the message
   optional hank.user.User author = 3;

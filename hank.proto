@@ -32,6 +32,8 @@ import "io/instruct_plugin_input.proto";
 import "io/instruct_plugin_output.proto";
 import "io/unload_plugin_input.proto";
 import "io/unload_plugin_output.proto";
+import "io/datetime_input.proto";
+import "io/datetime_output.proto";
 
 package hank;
 
@@ -47,6 +49,8 @@ service Hank {
   rpc cron(CronInput) returns (CronOutput);
   // [Internal] Send a one shot job to hank.
   rpc one_shot(OneShotInput) returns (OneShotOutput);
+  // [Internal] Get the current local datetime from hank.
+  rpc datetime(DatetimeInput) returns (DatetimeOutput);
   // [Internal] Send a reload plugin request to hank.
   //
   // Requires EscalatedPrivilege::RELOAD_PLUGIN

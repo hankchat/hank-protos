@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package hank;
+
+// [Internal] Output from a datetime request to Hank.
+message DatetimeOutput {
+  // Hanks local date/time in RFC 3339 format.
+  string datetime = 1;
+}

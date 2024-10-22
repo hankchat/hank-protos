@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package hank;
+
+// [Internal] Input to a datetime request to Hank.
+message DatetimeInput {}
