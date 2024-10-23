@@ -56,7 +56,7 @@ typescript-clean: (_typescript-recipe "clean")
 # Commit TypeScript types
 [group("typescript")]
 typescript-commit: && (_typescript-recipe "commit")
-    git -C hank-rust-types checkout main
+    git -C hank-typescript-types checkout main
 
 # Publish TypeScript types
 [group("typescript")]
